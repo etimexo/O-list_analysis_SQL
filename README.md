@@ -1,3 +1,4 @@
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/banner.png)
 # E-Commerce Data Analysis Project
 
 ## 📊 Overview
@@ -11,7 +12,6 @@ This project aims to derive insights from a comprehensive e-commerce dataset usi
 - Analyze total sales and revenue distribution by city and category.
 - Discover product performance through customer reviews and identify the best-rated items.
 - Highlight seller efficiency and contributions.
-- Uncover ordering trends based on time (monthly) and customer activity.
 
 ---
 
@@ -25,6 +25,17 @@ This project aims to derive insights from a comprehensive e-commerce dataset usi
 - **Sellers**: Contains seller_id, zip_code, city, states.
 - **Location**: Gives more details, zip_code, city, states.
 - **Order_review**: Includes review_id, order_id, review_score, creation_date, answer_date.
+
+---
+
+🗂️ Database Schema Overview
+To understand the relationships between the various tables used in this project, I referred to the official schema diagram provided with the dataset. This schema outlines how entities such as customers, orders, order items, products, sellers, and reviews are interconnected through keys like order_id, product_id, seller_id, and customer_id.
+
+📌 Schema Preview:
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/schema.png)
+
+This visual aid was especially useful during JOIN operations and while determining appropriate groupings for aggregation and analysis. It also helped in identifying the cardinality between tables (e.g., one-to-many relationships between customers and orders).
 
 ---
 
