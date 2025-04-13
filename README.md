@@ -28,6 +28,14 @@ This project aims to derive insights from a comprehensive e-commerce dataset usi
 
 ---
 
+## 🧹 Data Cleaning
+Before diving into the analysis, I performed several data cleaning steps to ensure consistency and improve readability:
+- Timestamp Conversion: Several columns contained hashtag-style timestamp formats (e.g., ######). I converted these into standard YYYY-MM-DD datetime formats, enabling easier filtering and time-based aggregation.
+- Column Name Refinement: Some column names were either unclear or poorly formatted. I renamed them to follow consistent, descriptive naming conventions. For example, columns like product_category_name_english were renamed to product_category_eng for clarity.
+- Column Dropping: I removed columns that were irrelevant to the scope of this analysis or had too many null values, such as the ones in the location table: latitude and longitude.
+
+---
+
 ## 🧪 SQL Queries and Insights
 
 ### 1. 🕵️‍♂️ Checking for Duplicate Customers
