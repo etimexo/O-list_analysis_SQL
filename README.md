@@ -278,6 +278,8 @@ ORDER BY product_category, last_order_date;
 
 ![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/6_month_r.png)
 
+**📌 Interpretation:** This shows the products which have not been purchased in the last six (6) months. This highlights that there might be need for review regarding marketing, inventory, or product viability.
+
 ---
 
 ## ✅ Conclusion
@@ -287,7 +289,7 @@ The SQL analysis provides a rich foundation for understanding customer behaviors
 
 ## ✍️ Author
 **Elijah Obisesan Timilehin**  
-_Self-taught Data Scientist & Physics Undergraduate_  
-🔗 [LinkedIn](https://www.linkedin.com/in/teoso) | 🔗 [GitHub](https://github.com/etimexo)
+_Data Scientist & Physics Undergraduate_  
+🔗 [Portfolio Website]([https://gentledo](https://etimexo.github.io/iPortfolio-1.0.0/)) | 🔗 [LinkedIn](https://www.linkedin.com/in/teoso) | 🔗 [GitHub](https://github.com/etimexo)
 
 ---
