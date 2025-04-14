@@ -1,5 +1,5 @@
-![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/banner.png)
 # E-Commerce Data Analysis Project
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/banner.png)
 
 ## 📊 Overview
 This project aims to derive insights from a comprehensive e-commerce dataset using SQL. The analysis includes identifying trends in sales, customer behaviors, product performance, and seller activity. The queries were designed to answer key business questions that could support data-driven decision-making for growth and customer satisfaction.
@@ -29,6 +29,7 @@ This project aims to derive insights from a comprehensive e-commerce dataset usi
 ---
 
 🗂️ Database Schema Overview
+---
 To understand the relationships between the various tables used in this project, I referred to the official schema diagram provided with the dataset. This schema outlines how entities such as customers, orders, order items, products, sellers, and reviews are interconnected through keys like order_id, product_id, seller_id, and customer_id.
 
 📌 Schema Preview:
@@ -67,7 +68,9 @@ FROM customers c
 JOIN duplicates d ON c.customer_id = d.customer_id
 WHERE d.frequency > 1;
 ```
-**📌 Interpretation:** Duplicates may hint at system issues or multiple accounts per user. This can impact personalized marketing strategies.
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/duplicates_r.png)
+
+**📌 Interpretation:** Duplicates may hint at system issues or multiple accounts per user. This can impact personalized marketing strategies. The result above shows that there weren't any duplicate customers.
 
 ---
 
@@ -75,8 +78,8 @@ WHERE d.frequency > 1;
 ```sql
 -- Total sales by city
 SELECT
-	c.city,
-	SUM(i.price) AS total_sales
+    c.city,
+    SUM(i.price) AS total_sales
 FROM orders o
 JOIN order_items i ON o.order_id = i.order_id
 JOIN customers c ON o.customer_id = c.customer_id
@@ -84,6 +87,10 @@ JOIN products p ON i.product_id = p.product_id
 GROUP BY c.city
 ORDER BY total_sales DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/cities_r.png)
+
+**📌 Interpretation:** This insight helps identify cities with high and low sales performance, enabling the business to tailor marketing strategies accordingly—such as running targeted awareness campaigns, offering special discounts, or implementing other localized promotional efforts.
 
 ---
 
@@ -100,6 +107,10 @@ JOIN product_category cat ON p.product_category_name = cat.product_category_name
 GROUP BY category
 ORDER BY sum_per_category DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/sales_by_cat_r.png)
+
+**📌 Interpretation:** This highlights, in descending order, the product categories that generate the highest revenue. It provides valuable insight into which categories are driving sales the most, helping to inform inventory, marketing, and business strategy decisions.
 
 ---
 
@@ -134,6 +145,10 @@ UNION ALL
 SELECT * FROM max_category;
 ```
 
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/min_max_cat_r.png)
+
+**📌 Interpretation:** This analysis identifies both the top-performing and underperforming product categories in terms of total revenue. Understanding these extremes helps businesses recognize which categories are thriving and which may require strategic improvements—such as promotional efforts, product reviews, or even reconsideration of inventory. It could mean boosting promotions for low-performing ones or doubling down on what’s already doing well. Either way, it’s a great way to stay on top of what’s working and what’s not.
+
 ---
 
 ### 5. 📆 Total Orders by Month
@@ -147,6 +162,10 @@ FROM orders
 GROUP BY 1, 2, EXTRACT(MONTH FROM purchase_time)
 ORDER BY 3 DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/month_r.png)
+
+**📌 Interpretation:** This breaks down the total number of orders placed each month across different years. It’s useful for spotting trends—like which months are busier and when things slow down. With this, businesses can plan ahead for high-demand periods and prep marketing or inventory strategies accordingly.
 
 ---
 
@@ -162,6 +181,10 @@ JOIN order_review r ON i.order_id = r.order_id
 GROUP BY 1
 ORDER BY 2 DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/cat_rev_r.png)
+
+**📌 Interpretation:** This gives a look at how customers feel about each product category, on average. By seeing which categories get the highest ratings, we can tell what customers are loving the most. On the flip side, lower average scores might signal areas that need improvement—maybe in product quality, delivery, or even customer expectations.
 
 ---
 
@@ -183,6 +206,10 @@ FROM ranked
 WHERE ranked.rank = 1;
 ```
 
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/h_rev_r.png)
+
+**📌 Interpretation:** This highlights the best-reviewed product in each category. It's super helpful for identifying customer favorites — those products that consistently get top ratings. Knowing which item shines the most in its category can guide restocking decisions, highlight strong performers, and even help recommend similar products to new customers.
+
 ---
 
 ### 8. 👨‍💼 Top Sellers
@@ -196,6 +223,11 @@ JOIN products p ON i.product_id = p.product_id
 GROUP BY 1
 ORDER BY 2 DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/sellers_prod_r.png)
+
+
+**📌 Interpretation:** This shows the sellers with the highest number of products sold across the platform. It's a great way to recognize the most active and high-performing sellers. These top sellers might be ideal partners for exclusive deals, promotions, or even to understand what they’re doing right in terms of product quality, pricing, or delivery.
 
 ---
 
@@ -212,6 +244,10 @@ JOIN product_category cat ON p.product_category_name = cat.product_category_name
 GROUP BY 1, 2
 ORDER BY 3 DESC;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/sellers_cat_r.png)
+
+**📌 Interpretation:** This helps us see which sellers are dominating specific product categories. It’s useful for spotting specialists or niche sellers who are doing really well in certain segments. This kind of info can guide category-specific partnerships, promotions, or even onboarding strategies for new sellers.
 
 ---
 
@@ -239,6 +275,8 @@ WHERE last_order_date IS NULL
    OR last_order_date < NOW() - INTERVAL '6 months'
 ORDER BY product_category, last_order_date;
 ```
+
+![Schema](https://github.com/etimexo/O-list_analysis_SQL/blob/main/Images/6_month_r.png)
 
 ---
 
